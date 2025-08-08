@@ -1,0 +1,23 @@
+{
+  "requestId": "00000000-0000-0000-0000-000000000000",
+  "source": "local-cli",
+  "action": "process_order",
+  "user": {
+    "id": "u-12345",
+    "email": "john.doe@example.com",
+    "ip": "127.0.0.1"
+  },
+  "order": {
+    "id": "ord-98765",
+    "currency": "EUR",
+    "total": 129.89,
+    "items": [
+      { "sku": "SKU-1", "name": "Widget A", "qty": 2, "price": 29.95 },
+      { "sku": "SKU-2", "name": "Widget B", "qty": 1, "price": 69.99 }
+    ]
+  },
+  "meta": {
+    "correlationId": "demo-corr-001",
+    "timestamp": "2025-08-07T22:50:00Z"
+  }
+}

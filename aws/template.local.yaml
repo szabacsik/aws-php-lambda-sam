@@ -1,0 +1,41 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: AWS PHP Lambda SAM - Local Development
+
+Globals:
+  Function:
+    Timeout: 30
+    MemorySize: 512
+    Environment:
+      Variables:
+        STAGE: local
+        AWS_REGION: eu-central-1
+
+Parameters:
+  Stage:
+    Type: String
+    Description: Deployment stage
+    Default: local
+    AllowedValues:
+      - local
+      - dev
+      - staging
+      - production
+
+Resources:
+  PhpLambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub 'aws-php-lambda-sam-${Stage}'
+      CodeUri: ../
+      Handler: index.php
+      Runtime: provided.al2
+      Layers:
+        # Bref PHP 8.4 layer (eu-central-1)
+        - arn:aws:lambda:eu-central-1:534081306603:layer:php-84:30
+      Architectures:
+        - x86_64
+      Tags:
+        Project: aws-php-lambda-sam
+        Component: lambda
+        Environment: !Ref Stage

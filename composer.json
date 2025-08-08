@@ -1,0 +1,36 @@
+{
+  "name": "aws-php-lambda-sam/skeleton",
+  "description": "Minimal PHP Lambda function skeleton for AWS SAM - Proof of Concept",
+  "type": "project",
+  "license": "MIT",
+  "require": {
+    "php": "^8.4",
+    "bref/bref": "*",
+    "bref/monolog-bridge": "*",
+    "monolog/monolog": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "AwsPhpLambdaSam\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "AwsPhpLambdaSam\\Tests\\": "tests/"
+    }
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "classmap-authoritative": true,
+    "sort-packages": true
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true,
+  "scripts": {
+    "test": "phpunit",
+    "install-prod": "composer install --no-dev --optimize-autoloader --classmap-authoritative"
+  }
+}
